@@ -47,19 +47,11 @@ module Input_Processor(
         prev_inputs[3] <= prev_inputs[2];
     
         prev_inputs[0] <= serial_in;
-    
-//        if (prev_inputs[2:0] == 3'b000) begin
-//            // short space
-//            out_ready <= 1;
-//            out <= 2'b10;       
-        
-//        end
-//        else begin
             
             if (prev_inputs[0] == 0) begin
                 
                 
-                if (prev_inputs[3:0] /* indexing to not create errors if I change register size */ == 4'b1110) begin
+                if (prev_inputs[3:0] == 4'b1110) begin /* indexing to not create errors if the reg size is changed */
                     out <= 2'b01; // dash
                     out_ready <= 1;
                 end
